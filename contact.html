@@ -88,104 +88,55 @@
 
     <script>
 (function(){
-  const API = 'https://script.google.com/macros/s/AKfycbxoRMkCjQPxkQ1rgJlWkORM7zNKLCgEKuWIWFe8d-S-SfiD_dSiwC44FiUbVMX4T3Wv/exec'; 
+  const API = 'https://script.google.com/macros/s/AKfycbxoRMkCjQPxkQ1rgJlWkORM7zNKLCgEKuWIWFe8d-S-SfiD_dSiwC44FiUbVMX4T3Wv/exec';
+
   const form = document.getElementById('resvForm');
   const slotSel = document.getElementById('slotSelect');
   const msg = document.getElementById('resvMsg');
   const dateInput = form.elements['date'];
   const sizeInput = form.elements['size'];
 
-  // Set min date = today
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth()+1).padStart(2,'0');
-  const dd = String(today.getDate()).padStart(2,'0');
+  // min date = today
+  const t = new Date(), yyyy=t.getFullYear(), mm=String(t.getMonth()+1).padStart(2,'0'), dd=String(t.getDate()).padStart(2,'0');
   dateInput.min = `${yyyy}-${mm}-${dd}`;
 
   async function fetchAvailability() {
-    const date = dateInput.value;
-    const size = sizeInput.value || 2;
-    if(!date) return;
-    msg.textContent = 'Checking availability...';
-
+    const date = dateInput.value, size = sizeInput.value || 2;
+    if(!date) return; msg.textContent = 'Checking availability...';
     try{
       const u = new URL(API);
-      u.searchParams.set('fn','availability');
-      u.searchParams.set('date', date);
-      u.searchParams.set('size', size);
-      u.searchParams.set('cors','1'); // <-- allow cross-origin
+      u.searchParams.set('fn','availability'); u.searchParams.set('date', date); u.searchParams.set('size', size); u.searchParams.set('cors','1');
       const res = await fetch(u.toString(), { method:'GET' });
-      const txt = await res.text();
-      const data = JSON.parse(txt);
+      const txt = await res.text(); const data = JSON.parse(txt);
       slotSel.innerHTML = '<option value="">Select a time</option>';
-
-      if (!data.ok) { msg.textContent = (data.error||'Error'); return; }
-      if (!data.open) {
-        msg.textContent = data.reason === 'blackout'
-          ? 'We’re closed that day for a private event or holiday.'
-          : 'Closed that day.';
-        return;
-      }
-
+      if (!data.ok) { msg.textContent = data.error || 'Error'; return; }
+      if (!data.open) { msg.textContent = (data.reason==='blackout')?'We’re closed for a private event/holiday.':'Closed that day.'; return; }
       let added = 0;
       data.slots.forEach(s=>{
         const remaining = data.remaining[s] ?? 0;
         const opt = document.createElement('option');
         opt.value = s;
-        opt.textContent = remaining >= Number(size)
-          ? `${s} — Available (${remaining} left)`
-          : `${s} — Full`;
-        if (remaining < Number(size)) opt.disabled = true;
-        else added++;
+        opt.textContent = remaining >= Number(size) ? `${s} — Available (${remaining} left)` : `${s} — Full`;
+        if (remaining < Number(size)) opt.disabled = true; else added++;
         slotSel.appendChild(opt);
       });
-
-      msg.textContent = added
-        ? 'Select an available time below.'
-        : 'No slots available. Try another date or reduce party size.';
-    } catch(err){
-      msg.textContent = 'Network error. Try again.';
-    }
+      msg.textContent = added ? 'Select an available time below.' : 'No slots available. Try another date or reduce party size.';
+    } catch(e){ msg.textContent = 'Network error. Try again.'; }
   }
-
   dateInput.addEventListener('change', fetchAvailability);
   sizeInput.addEventListener('change', fetchAvailability);
 
   form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    msg.textContent = 'Submitting...';
-    const payload = Object.fromEntries(new FormData(form).entries());
-    payload.size = Number(payload.size||1);
-
-    if (!payload.date || !payload.slot) {
-      msg.textContent = 'Please select a date and time.';
-      return;
-    }
-
+    e.preventDefault(); msg.textContent = 'Submitting...';
+    const payload = Object.fromEntries(new FormData(form).entries()); payload.size = Number(payload.size||1);
+    if (!payload.date || !payload.slot) { msg.textContent = 'Please select a date and time.'; return; }
     try{
-      const postUrl = API + '?cors=1';
-      const res = await fetch(postUrl, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload)
-      });
-      const txt = await res.text();
-      const data = JSON.parse(txt);
-
-      if (res.ok && data.ok) {
-        form.reset();
-        slotSel.innerHTML = '<option value="">Select a time</option>';
-        msg.textContent = `Booked for ${data.when.date} at ${data.when.slot}. Confirmation has been sent by email.`;
-      } else if (data && data.suggestions) {
-        const sugg = data.suggestions.map(s => `• ${s}`).join(' ');
-        msg.textContent = `That time just filled. Try: ${sugg}`;
-        fetchAvailability();
-      } else {
-        msg.textContent = (data && data.error) || 'Could not complete reservation.';
-      }
-    } catch(err){
-      msg.textContent = 'Network error. Try again.';
-    }
+      const res = await fetch(API + '?cors=1', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      const txt = await res.text(); const data = JSON.parse(txt);
+      if (res.ok && data.ok) { form.reset(); slotSel.innerHTML = '<option value="">Select a time</option>'; msg.textContent = `Booked for ${data.when.date} at ${data.when.slot}. Confirmation sent by email.`; }
+      else if (data && data.suggestions) { msg.textContent = `That time just filled. Try: ${data.suggestions.map(s=>'• '+s).join(' ')}`; fetchAvailability(); }
+      else { msg.textContent = (data && data.error) || 'Could not complete reservation.'; }
+    } catch(e){ msg.textContent = 'Network error. Try again.'; }
   });
 })();
 </script>
