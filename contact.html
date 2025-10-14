@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contact & Reservations — The Bypass 168</title>
+<meta name="description" content="Contact The Bypass 168 for reservations, events, and questions." />
+<link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+<header class="site-header container header-inner">
+  <a class="brand" href="/"><span class="brand-text">The Bypass 168</span></a>
+  <nav class="nav"><a href="/">Home</a><a href="/menu.html">Menu</a><a href="/about.html">About</a><a href="/gallery.html">Gallery</a></nav>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h1>Contact & Reservations</h1>
+    <p class="muted">Email: <a href="mailto:hi@thebypass168.com">hi@thebypass168.com</a> — Phone: (123) 456-7890</p>
+
+    <h2 id="reserve">Make a reservation</h2>
+    <!-- POSTs to your Formspree endpoint and you will receive email -->
+    <form id="reserveForm" action="https://formspree.io/f/mgvnnjpy" method="POST" novalidate>
+      <label>Full name<input type="text" name="name" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Phone<input type="tel" name="phone"></label>
+      <label>Date & time<input type="datetime-local" name="datetime" required></label>
+      <label>Guests<select name="guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></label>
+      <label>Notes<textarea name="notes" rows="3"></textarea></label>
+
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="type" value="reservation">
+      <div class="row">
+        <button type="submit" class="btn primary">Request Reservation</button>
+        <a href="mailto:hi@thebypass168.com" class="btn">Email Us</a>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer container">
+  <div>© <span id="yr5"></span> The Bypass 168</div>
+</footer>
+
+<script src="/assets/js/scripts.js"></script>
+</body>
+</html>
