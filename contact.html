@@ -11,15 +11,182 @@
 <body>
 <header class="site-header container header-inner">
   <a class="brand" href="index.html"><span class="brand-text">The Bypass 168</span></a>
-  <nav class="nav"><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="about.html">About</a><a href="gallery.html">Gallery</a></nav>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
 </header>
 
 <main class="container">
   <section class="card">
     <h1>Contact & Reservations</h1>
-    <p class="muted">Email: <a href="mailto:hi@thebypass168.com">hi@thebypass168.com</a></p>
+    <p class="muted">
+      Email: <a href="mailto:hi@thebypass168.com">hi@thebypass168.com</a>
+    </p>
 
-    <h2 id="reserve">Request a reservation</h2>
+    <h2>Request a Reservation</h2>
+    <section class="card" id="reserve-widget">
+      <p class="muted">
+        Reserve your table at <strong>The Bypass 168</strong>.<br>
+        We seat from open to close with a short buffer between tables.<br>
+        Only half of our 49 seats are available for reservations.
+      </p>
+
+      <form id="resvForm" novalidate>
+        <label>Full name
+          <input type="text" name="name" required>
+        </label>
+
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+
+        <label>Phone
+          <input type="tel" name="phone" placeholder="optional">
+        </label>
+
+        <label>Date
+          <input type="date" name="date" required>
+        </label>
+
+        <label>Party size
+          <select name="size" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </label>
+
+        <label>Time
+          <select name="slot" id="slotSelect" required>
+            <option value="">Select a time</option>
+          </select>
+        </label>
+
+        <label>Notes
+          <textarea name="notes" rows="3" placeholder="Occasion, seating preference, etc."></textarea>
+        </label>
+
+        <div class="row" style="margin-top:10px">
+          <button type="submit" class="btn primary">Request Reservation</button>
+        </div>
+      </form>
+
+      <div id="resvMsg" class="muted" style="margin-top:10px"></div>
+    </section>
+
+    <script>
+    (function(){
+      const API = 'https://script.google.com/a/macros/thebypass168.com/s/AKfycbxv4PzqMOd44h8uReuWeLL7RSn_t9-lD2zcjPsGAZtKuGsBohAXFPANFCZXtKDcLTiy/exec';
+      const form = document.getElementById('resvForm');
+      const slotSel = document.getElementById('slotSelect');
+      const msg = document.getElementById('resvMsg');
+      const dateInput = form.elements['date'];
+      const sizeInput = form.elements['size'];
+
+      // Set min date = today
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth()+1).padStart(2,'0');
+      const dd = String(today.getDate()).padStart(2,'0');
+      dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+      async function fetchAvailability() {
+        const date = dateInput.value;
+        const size = sizeInput.value || 2;
+        if(!date) return;
+        msg.textContent = 'Checking availability...';
+
+        try{
+          const u = new URL(API);
+          u.searchParams.set('fn','availability');
+          u.searchParams.set('date', date);
+          u.searchParams.set('size', size);
+          const res = await fetch(u.toString(), { method:'GET' });
+          const data = await res.json();
+          slotSel.innerHTML = '<option value="">Select a time</option>';
+
+          if (!data.ok) { msg.textContent = (data.error||'Error'); return; }
+          if (!data.open) {
+            msg.textContent = data.reason === 'blackout'
+              ? 'We’re closed that day for a private event or holiday.'
+              : 'Closed that day.';
+            return;
+          }
+
+          let added = 0;
+          data.slots.forEach(s=>{
+            const remaining = data.remaining[s] ?? 0;
+            const opt = document.createElement('option');
+            opt.value = s;
+            opt.textContent = remaining >= Number(size)
+              ? `${s} — Available (${remaining} left)`
+              : `${s} — Full`;
+            if (remaining < Number(size)) opt.disabled = true;
+            else added++;
+            slotSel.appendChild(opt);
+          });
+
+          msg.textContent = added
+            ? 'Select an available time below.'
+            : 'No slots available. Try another date or reduce party size.';
+        } catch(err){
+          msg.textContent = 'Network error. Try again.';
+        }
+      }
+
+      dateInput.addEventListener('change', fetchAvailability);
+      sizeInput.addEventListener('change', fetchAvailability);
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        msg.textContent = 'Submitting...';
+        const payload = Object.fromEntries(new FormData(form).entries());
+        payload.size = Number(payload.size||1);
+
+        if (!payload.date || !payload.slot) {
+          msg.textContent = 'Please select a date and time.';
+          return;
+        }
+
+        try{
+          const res = await fetch(API, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+
+          if (res.ok && data.ok) {
+            form.reset();
+            slotSel.innerHTML = '<option value="">Select a time</option>';
+            msg.textContent = `Booked for ${data.when.date} at ${data.when.slot}. Confirmation has been sent by email.`;
+          } else if (data.suggestions) {
+            const sugg = data.suggestions.map(s => `• ${s}`).join(' ');
+            msg.textContent = `That time just filled. Try: ${sugg}`;
+            fetchAvailability();
+          } else {
+            msg.textContent = data.error || 'Could not complete reservation.';
+          }
+        } catch(err){
+          msg.textContent = 'Network error. Try again.';
+        }
+      });
+    })();
+    </script>
+
+    <h2>General Inquiries</h2>
     <form id="reserveForm" action="https://formspree.io/f/mgvnnjpy" method="POST" novalidate>
       <label>Full name<input type="text" name="name" required></label>
       <label>Email<input type="email" name="email" required></label>
@@ -30,7 +197,7 @@
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <input type="hidden" name="type" value="reservation">
       <div class="row">
-        <button type="submit" class="btn primary">Request Reservation</button>
+        <button type="submit" class="btn primary">Send Message</button>
         <a href="mailto:hi@thebypass168.com" class="btn">Email Us</a>
       </div>
     </form>
