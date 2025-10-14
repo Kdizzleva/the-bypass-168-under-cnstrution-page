@@ -56,6 +56,48 @@ document.addEventListener('DOMContentLoaded', function(){
       } catch(err){
         showToast('Network error. Try again later.');
       }
+      // Reopening modal (shows once per 24h)
+(function(){
+  const KEY = 'bypass168_reopen_seen_at';
+  const HOURS_24 = 24*60*60*1000;
+
+  function shouldShow(){
+    try{
+      const last = Number(localStorage.getItem(KEY) || 0);
+      return !last || (Date.now() - last) > HOURS_24;
+    }catch(_){ return true; }
+  }
+
+  function openModal(){
+    const m = document.getElementById('reopenModal');
+    if(!m) return;
+    m.classList.add('show');
+    m.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    try{ localStorage.setItem(KEY, String(Date.now())); }catch(_){}
+  }
+
+  function closeModal(){
+    const m = document.getElementById('reopenModal');
+    if(!m) return;
+    m.classList.remove('show');
+    m.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  // Wire close actions
+  document.addEventListener('click', (e)=>{
+    if (e.target && e.target.getAttribute('data-close') === '1') closeModal();
+  });
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Show with a gentle delay
+  window.addEventListener('load', ()=>{
+    if (shouldShow()) setTimeout(openModal, 1200);
+  });
+})();
     });
   });
 
