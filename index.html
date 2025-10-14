@@ -7,20 +7,15 @@
 <meta name="description" content="The Bypass 168 — Modern bar & grill in Chesapeake, VA. Reopening soon. See menu, make a reservation, join the mailing list." />
 <link rel="canonical" href="https://thebypass168.com/" />
 <link rel="icon" href="favicon.ico">
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="styles.css">
 <meta name="theme-color" content="#0b0f13">
-<meta property="og:title" content="The Bypass 168 — Modern Bar & Grill" />
-<meta property="og:description" content="Modern bar & grill in Chesapeake, VA. See menu & make a reservation." />
-<meta property="og:url" content="https://thebypass168.com/" />
-<meta property="og:image" content="https://thebypass168.com/assets/og/og-image.jpg" />
-<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 </head>
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/"><svg width="42" height="42" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="#0b1013"></rect><text x="50%" y="58%" text-anchor="middle" fill="#eaf3ff" font-weight="700" font-size="20">168</text></svg><span class="brand-text">The Bypass 168</span></a>
+    <a class="brand" href="index.html"><svg width="42" height="42" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="#0b1013"></rect><text x="50%" y="58%" text-anchor="middle" fill="#eaf3ff" font-weight="700" font-size="20">168</text></svg><span class="brand-text">The Bypass 168</span></a>
     <nav class="nav" aria-label="Primary">
-      <a href="/">Home</a>
+      <a href="index.html">Home</a>
       <a href="menu.html">Menu</a>
       <a href="about.html">About</a>
       <a href="gallery.html">Gallery</a>
@@ -30,7 +25,7 @@
   </div>
 
   <div id="navMobile" class="nav-mobile" hidden>
-    <a href="/">Home</a>
+    <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
     <a href="about.html">About</a>
     <a href="gallery.html">Gallery</a>
@@ -49,10 +44,9 @@
           <a class="btn" href="contact.html#reserve">Reserve</a>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <!-- placeholder image; replace with your hero photo -->
-        <img src="/assets/img/hero.jpg" alt="" />
-      </div>
+      <!-- Hero image removed until you add one; drop a file named hero.jpg next to index.html and re-add:
+      <div class="hero-visual" aria-hidden="true"><img src="hero.jpg" alt=""></div>
+      -->
     </div>
   </section>
 
@@ -107,17 +101,8 @@
   <div class="copyright">© <span id="yr"></span> The Bypass 168</div>
 </footer>
 
-<script src="assets/js/scripts.js"></script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Restaurant",
-  "name":"The Bypass 168",
-  "url":"https://thebypass168.com",
-  "address":{"@type":"PostalAddress","addressLocality":"Chesapeake","addressRegion":"VA","addressCountry":"US"},
-  "servesCuisine":"American",
-  "priceRange":"$$"
-}
-</script>
+<script src="scripts.js"></script>
+</body>
+</html>
 </body>
 </html>
