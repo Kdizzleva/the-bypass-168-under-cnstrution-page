@@ -215,3 +215,38 @@ button:focus-visible, .btn:focus-visible, input:focus-visible, select:focus-visi
   .site-header, .site-footer, .nav, .btn, .hero-visual, .toast{display:none !important}
   .card{border:0; box-shadow:none; padding:0}
 }
+/* ── Reopening Modal ───────────────────────────────────────── */
+.modal{position:fixed;inset:0;z-index:60;display:none}
+.modal.show{display:block}
+.modal__overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(2px);opacity:0;transition:opacity .25s ease}
+.modal.show .modal__overlay{opacity:1}
+.modal__dialog{
+  position:relative; z-index:1; width:min(560px,92%); margin:8vh auto 0; 
+  background:linear-gradient(180deg,var(--elev-1),var(--elev-2));
+  border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow);
+  padding:22px 20px 20px; transform:translateY(16px); opacity:0; 
+  transition:opacity .25s ease, transform .25s ease;
+}
+.modal.show .modal__dialog{opacity:1; transform:translateY(0)}
+.modal__close{
+  position:absolute; top:8px; right:10px; border:1px solid var(--line);
+  background:transparent; color:var(--muted); width:36px; height:36px; 
+  border-radius:10px; font-size:22px; line-height:34px; cursor:pointer;
+}
+.modal__close:hover{color:var(--text); background:rgba(255,255,255,.04)}
+.modal__badge{
+  display:inline-block; font-weight:800; letter-spacing:.2px; font-size:12px; 
+  color:#061219; background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  padding:6px 10px; border-radius:999px; box-shadow:0 8px 18px rgba(40,174,178,.28);
+}
+.modal__title{margin:10px 0 4px; font-size:clamp(22px,3.6vw,28px)}
+.modal__desc{color:var(--muted); margin:6px 0 14px}
+.modal__cta{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.modal__social{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+.modal .social{
+  display:inline-flex; align-items:center; gap:8px; 
+  padding:10px 12px; border-radius:12px; color:var(--text);
+  border:1px solid var(--line); background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(0,0,0,.14));
+}
+.modal .social:hover{border-color:rgba(255,255,255,.18)}
+@media (max-width:520px){ .modal__cta .btn{flex:1} }
