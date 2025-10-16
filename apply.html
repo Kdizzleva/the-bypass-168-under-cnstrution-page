@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>We’re Hiring — The Bypass 168</title>
+  <meta name="description" content="Apply to join The Bypass 168 team in Chesapeake, VA. All skill levels welcome. 18+ only." />
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css?v=3">
+
+  <!-- Structured data: multiple JobPosting entries -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Organization", "name": "The Bypass 168", "url": "https://www.thebypass168.com" },
+      { "@type": "JobPosting", "title": "Bartender",      "employmentType": "PART_TIME", "hiringOrganization": { "@type": "Organization", "name": "The Bypass 168" }, "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Chesapeake", "addressRegion": "VA", "addressCountry": "US" } } },
+      { "@type": "JobPosting", "title": "Prep Cook",       "employmentType": "PART_TIME", "hiringOrganization": { "@type": "Organization", "name": "The Bypass 168" }, "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Chesapeake", "addressRegion": "VA", "addressCountry": "US" } } },
+      { "@type": "JobPosting", "title": "Wait Staff",      "employmentType": "PART_TIME", "hiringOrganization": { "@type": "Organization", "name": "The Bypass 168" }, "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Chesapeake", "addressRegion": "VA", "addressCountry": "US" } } },
+      { "@type": "JobPosting", "title": "Store Manager",   "employmentType": "FULL_TIME", "hiringOrganization": { "@type": "Organization", "name": "The Bypass 168" }, "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Chesapeake", "addressRegion": "VA", "addressCountry": "US" } } },
+      { "@type": "JobPosting", "title": "Cook",            "employmentType": "PART_TIME", "hiringOrganization": { "@type": "Organization", "name": "The Bypass 168" }, "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Chesapeake", "addressRegion": "VA", "addressCountry": "US" } } },
+      { "@type": "JobPosting", "title": "Busser",          "employmentType": "PART_TIME", "hiringOrganization": { "@type": "Organization", "name": "The Bypass 168" }, "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Chesapeake", "addressRegion": "VA", "addressCountry": "US" } } },
+      { "@type": "JobPosting", "title": "General Help",    "employmentType": "PART_TIME", "hiringOrganization": { "@type": "Organization", "name": "The Bypass 168" }, "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Chesapeake", "addressRegion": "VA", "addressCountry": "US" } } }
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header container header-inner">
+  <a class="brand" href="index.html"><span class="brand-text">The Bypass 168</span></a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h1>We’re Hiring</h1>
+    <p class="muted">We’re building a welcoming, fast-moving team. All skill levels are invited to apply — <strong>you must be 18+</strong>.</p>
+  </section>
+
+  <section class="card">
+    <h2>Open Roles</h2>
+    <ul class="role-grid">
+      <li>Bartender</li>
+      <li>Prep Cook</li>
+      <li>Wait Staff</li>
+      <li>Store Manager</li>
+      <li>Cook</li>
+      <li>Busser</li>
+      <li>General Help</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Apply Now</h2>
+    <p class="muted">Tell us about you, your experience level, and your availability.</p>
+
+    <!-- Formspree wired up -->
+    <form id="applyForm" action="https://formspree.io/f/mgvnnjpy" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Job Application — The Bypass 168">
+      <input type="hidden" name="form_name" value="apply-page">
+
+      <div class="grid-2">
+        <label>First name
+          <input type="text" name="first_name" required>
+        </label>
+        <label>Last name
+          <input type="text" name="last_name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Phone
+          <input type="tel" name="phone" required>
+        </label>
+        <label>Earliest start date
+          <input type="date" name="start_date">
+        </label>
+        <label>Experience level
+          <select name="experience" required>
+            <option value="" selected disabled>Select one</option>
+            <option>No experience (train me)</option>
+            <option>Some experience</option>
+            <option>Experienced</option>
+            <option>Manager/Supervisor experience</option>
+          </select>
+        </label>
+      </div>
+
+      <fieldset class="roles">
+        <legend>Positions you’re applying for (choose one or more)</legend>
+        <label><input type="checkbox" name="roles" value="Bartender"> Bartender</label>
+        <label><input type="checkbox" name="roles" value="Prep Cook"> Prep Cook</label>
+        <label><input type="checkbox" name="roles" value="Wait Staff"> Wait Staff</label>
+        <label><input type="checkbox" name="roles" value="Store Manager"> Store Manager</label>
+        <label><input type="checkbox" name="roles" value="Cook"> Cook</label>
+        <label><input type="checkbox" name="roles" value="Busser"> Busser</label>
+        <label><input type="checkbox" name="roles" value="General Help"> General Help</label>
+      </fieldset>
+
+      <fieldset class="availability">
+        <legend>Availability</legend>
+        <div class="grid-2">
+          <label>Days available
+            <select name="days_available" multiple size="5">
+              <option>Mon</option><option>Tue</option><option>Wed</option>
+              <option>Thu</option><option>Fri</option><option>Sat</option><option>Sun</option>
+            </select>
+          </label>
+          <label>Times available
+            <select name="times_available" multiple size="5">
+              <option>Morning</option><option>Afternoon</option><option>Evening</option><option>Late</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <label>Résumé URL (Google Drive/Dropbox link)
+        <input type="url" name="resume_url" placeholder="https://drive.google.com/…">
+      </label>
+
+      <label>Tell us about you (optional)
+        <textarea name="about" rows="5" placeholder="Past roles, strengths, or why you’d love to work with us."></textarea>
+      </label>
+
+      <div class="grid-2">
+        <label class="checkbox"><input type="checkbox" id="over18" name="over18" required> I confirm I am over the age of 18.</label>
+        <label class="checkbox"><input type="checkbox" name="work_auth" required> I am legally authorized to work in the U.S.</label>
+      </div>
+
+      <!-- honeypot -->
+      <input type="text" name="_gotcha" autocomplete="off" tabindex="-1" style="display:none">
+
+      <div class="row" style="margin-top:12px">
+        <button type="submit" class="btn primary">Submit Application</button>
+        <a class="btn" href="mailto:hi@thebypass168.com?subject=Job%20Application">Email Us</a>
+      </div>
+
+      <p id="applyMsg" class="muted" role="status" style="margin-top:10px"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer container">
+  <div>© <span id="yr"></span> The Bypass 168</div>
+  <nav class="footer-nav">
+    <a href="about.html">About</a>
+    <a href="menu.html">Menu</a>
+    <a href="contact.html">Contact</a>
+    <a href="apply.html" aria-current="page">We’re Hiring</a>
+  </nav>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Client-side checks + friendly messaging
+  (function(){
+    const form = document.getElementById('applyForm');
+    const msg  = document.getElementById('applyMsg');
+    const roles = () => [...form.querySelectorAll('input[name="roles"]:checked')].length;
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      msg.textContent = '';
+
+      if (!roles()) { msg.textContent = 'Please select at least one position.'; return; }
+      if (!form.over18.checked) { msg.textContent = 'Applicants must confirm they are 18 or older.'; return; }
+
+      try{
+        const body = new FormData(form);
+        const res = await fetch(form.action, { method:'POST', body, headers: { 'Accept': 'application/json' }});
+        if (res.ok) {
+          form.reset();
+          msg.textContent = 'Application received! We’ll be in touch.';
+        } else {
+          msg.textContent = 'Could not submit right now. Please email hi@thebypass168.com.';
+        }
+      } catch {
+        msg.textContent = 'Network error. Please try again or email us.';
+      }
+    });
+  })();
+</script>
+
+<!-- Page-only styles -->
+<style>
+  .role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;list-style:none;padding:0;margin:6px 0 0}
+  .role-grid li{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(0,0,0,.12))}
+  form label{display:block;margin:8px 0}
+  input,select,textarea{width:100%}
+  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  fieldset{border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
+  legend{padding:0 6px;color:var(--muted)}
+  .checkbox{display:flex;align-items:center;gap:8px}
+</style>
+
+<script src="scripts.js"></script>
+</body>
+</html>
