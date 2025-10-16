@@ -1,50 +1,224 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Menu — The Bypass 168</title>
-<meta name="description" content="Sample menu for The Bypass 168 — small plates, mains, cocktails." />
-<link rel="icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.css?v=3">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Menu — The Bypass 168</title>
+  <meta name="description" content="Browse appetizers, sandwiches & wraps, entrées, soups & salads at The Bypass 168 in Chesapeake, VA." />
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 <header class="site-header container header-inner">
   <a class="brand" href="index.html"><span class="brand-text">The Bypass 168</span></a>
-  <nav class="nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="gallery.html">Gallery</a><a href="contact.html" class="cta">Contact</a></nav>
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="menu.html" aria-current="page">Menu</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html" class="cta">Contact</a>
+  </nav>
 </header>
 
 <main class="container">
   <section class="card">
-    <h1>Menu</h1>
-    <p class="muted">Our menu rotates seasonally. Below is a sample of what to expect.</p>
+    <h1>Our Menu</h1>
+    <p class="muted">Fresh, house-made favorites and a few Bypass originals. Ask about daily features and sides.</p>
+  </section>
 
-    <h2>Small Plates</h2>
+  <!-- APPETIZERS -->
+  <section class="card" id="appetizers">
+    <h2>Appetizers</h2>
     <ul class="menu-list">
-      <li><strong>Charred Octopus</strong> — smoked paprika, lemon, fingerling</li>
-      <li><strong>Steak Tartare</strong> — cured egg yolk, toasted sourdough</li>
+      <li>
+        <h3>Steamed Shrimp</h3>
+        <p>Lightly seasoned with old bay and lemon; served with drawn butter, cocktail sauce, and fresh lemon.</p>
+      </li>
+      <li>
+        <h3>Sesame Tuna Slices*</h3>
+        <p>Fresh tuna encrusted in sesame seeds and grilled to a perfect medium rare; served with house sauce.</p>
+      </li>
+      <li>
+        <h3>Nachos</h3>
+        <p>Warm tortilla chips layered with melted cheddar and pepper jack, lettuce, sour cream, and pico de gallo.</p>
+      </li>
+      <li>
+        <h3>Fried Veggie Basket</h3>
+        <p>Mushrooms, dill pickle spears, and jalapeños in our secret batter; served with ranch and horseradish sauce.</p>
+      </li>
+      <li>
+        <h3>Crab Dip</h3>
+        <p>Rich and crabby, served warm with pita wedges.</p>
+      </li>
+      <li>
+        <h3>Wings</h3>
+        <p>Crispy wings with your choice of sauces: BBQ, Mild, Hot, Old Bay, or Garlic Parmesan.</p>
+      </li>
+      <li>
+        <h3>Mozzarella Rounds</h3>
+        <p>House-breaded mozzarella, fried and served with marinara.</p>
+      </li>
+      <li>
+        <h3>The Triple Bypass</h3>
+        <p>Pick any three house dips (pizza dip, buffalo chicken dip, spinach artichoke dip) with tortilla chips and pita wedges.</p>
+      </li>
+      <li>
+        <h3>Homemade Hummus Platter</h3>
+        <p>Served with celery, carrot sticks, olives, feta, and pita wedges.</p>
+      </li>
+      <li>
+        <h3>Chips &amp; Salsa</h3>
+        <p>Warm tortilla chips with house salsa — chunky or smooth.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- SANDWICHES & WRAPS -->
+  <section class="card" id="sandwiches">
+    <h2>Sandwiches &amp; Wraps</h2>
+    <p class="muted">Served with lettuce, tomato, onion, pickle, and your choice of side.</p>
+    <ul class="menu-list">
+      <li>
+        <h3>Egg Salad Sandwich</h3>
+        <p>“Rock star quality!” — Tara’s legendary no-pickle recipe.</p>
+      </li>
+      <li>
+        <h3>Veggie Wrap</h3>
+        <p>House hummus, fresh spinach, tomato, pickled onions, and feta in a flour tortilla.</p>
+      </li>
+      <li>
+        <h3>Sriracha Tuna Wrap*</h3>
+        <p>Yellowfin tuna tossed in sriracha, wrapped with lettuce, onions, and sriracha mayo.</p>
+      </li>
+      <li>
+        <h3>Chicken Sandwich</h3>
+        <p>Lightly seasoned grilled or fried chicken breast on a kaiser roll.</p>
+      </li>
+      <li>
+        <h3>Crab Cake Sandwich</h3>
+        <p>Our crabiest crab cake on a kaiser roll with lettuce, tomato, and tartar sauce.</p>
+      </li>
+      <li>
+        <h3>BBQ Sandwich</h3>
+        <p>Carolina pulled pork on a kaiser roll with a side of coleslaw.</p>
+      </li>
+      <li>
+        <h3>BLT</h3>
+        <p>A classic — bacon, lettuce, and tomato on your choice of bread.</p>
+      </li>
+      <li>
+        <h3>Burger*</h3>
+        <p>Half-pound burger on a kaiser roll. Build it your way with our add-ons.</p>
+      </li>
     </ul>
 
-    <h2>Mains</h2>
-    <ul class="menu-list">
-      <li><strong>Ribeye</strong> — herb butter, roasted root vegetables</li>
-      <li><strong>Pan Roasted Salmon</strong> — warm potato salad, fennel</li>
-    </ul>
+    <div class="menu-note">
+      <strong>Sandwich &amp; Burger Add-Ons:</strong>
+      House sauces, American, feta, blue cheese, sautéed or pickled onions, sautéed mushrooms, coleslaw, bacon, and sautéed crab. 
+    </div>
+  </section>
 
-    <h2>Cocktails</h2>
+  <!-- ENTRÉES -->
+  <section class="card" id="entrees">
+    <h2>Entrées</h2>
+    <p class="muted">Served with a small House or Caesar salad and your choice of one side.</p>
     <ul class="menu-list">
-      <li><strong>Signature Old Fashioned</strong> — house bitters</li>
-      <li><strong>Seasonal Smash</strong> — fresh fruit, premium bourbon</li>
+      <li>
+        <h3>Tuna Tacos*</h3>
+        <p>Tuna blackened or grilled to medium-rare with cabbage, pico, shredded cheese, chipotle-lime sauce, and a drizzle of tropical hot sauce.</p>
+      </li>
+      <li>
+        <h3>Ribs</h3>
+        <p>Slow-cooked in our coffee BBQ sauce. Half or full rack.</p>
+      </li>
+      <li>
+        <h3>Chicken Piccata</h3>
+        <p>Chicken breast in lemon, butter, white wine, and caper sauce.</p>
+      </li>
+      <li>
+        <h3>Pork BBQ Platter</h3>
+        <p>Generous helping of grass-fed Carolina pork BBQ with coleslaw.</p>
+      </li>
+      <li>
+        <h3>Chipotle-Lime Fried Shrimp Dinner</h3>
+        <p>Large shrimp in chipotle-lime batter, fried crisp; served with cocktail sauce.</p>
+      </li>
+      <li>
+        <h3>Chicken Florentine</h3>
+        <p>Grilled chicken breast over spinach artichoke dip, garnished with marinated tomatoes.</p>
+      </li>
+      <li>
+        <h3>NY Strip*</h3>
+        <p>Hand-cut New York strip cooked to your liking; finished with sun-dried tomato or blue-cheese compound butter.</p>
+      </li>
+      <li>
+        <h3>Crab Cakes</h3>
+        <p>Two house crab cakes, pan-seared to perfection.</p>
+      </li>
     </ul>
+  </section>
 
-    <p class="muted">For a printable PDF, email <a href="mailto:hi@thebypass168.com">hi@thebypass168.com</a>.</p>
+  <!-- SOUPS & SALADS -->
+  <section class="card" id="soups-salads">
+    <h2>Soup &amp; Salads</h2>
+    <ul class="menu-list">
+      <li>
+        <h3>House Salad</h3>
+        <p>Romaine with cucumbers, tomatoes, carrots, onions, cheese, croutons, and bacon bits. Dressings: House Lemon Basil, Ranch, Blue Cheese, Honey Mustard, Light Italian, Thousand Island.</p>
+      </li>
+      <li>
+        <h3>Caesar Salad</h3>
+        <p>Crisp romaine tossed with Caesar dressing, shredded Parmesan, and croutons.</p>
+      </li>
+      <li>
+        <h3>Greek Salad</h3>
+        <p>Romaine with house lemon-basil dressing, tomatoes, onions, olives, cucumbers, croutons, and feta.</p>
+      </li>
+      <li>
+        <h3>Soup of the Day</h3>
+        <p>Ask your server for today’s selection.</p>
+      </li>
+    </ul>
+    <div class="menu-note">Add-ons available: chicken, tuna, or shrimp.</div>
+  </section>
+
+  <!-- SIDES -->
+  <section class="card" id="sides">
+    <h2>Sides</h2>
+    <p class="muted">Always available: French fries, baked potato, coleslaw. Ask about our daily fresh sides.</p>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="card" id="disclaimer">
+    <p class="muted" style="font-size:13px">
+      *Consuming raw or undercooked meats, seafood, or eggs may increase your risk of foodborne illness. Some items may be served undercooked upon request.
+    </p>
   </section>
 </main>
 
 <footer class="site-footer container">
-  <div>© <span id="yr2"></span> The Bypass 168</div>
+  <div>© <span id="yr"></span> The Bypass 168</div>
+  <nav class="footer-nav" aria-label="Footer">
+    <a href="about.html">About</a>
+    <a href="menu.html" aria-current="page">Menu</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </footer>
 
+<script>
+  // set year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
 <script src="scripts.js"></script>
+
+<style>
+  /* Small menu-specific helpers (keeps styles.css clean) */
+  .menu-list{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:14px}
+  .menu-list li{border-top:1px solid var(--line);padding-top:12px}
+  .menu-list li:first-child{border-top:none;padding-top:0}
+  .menu-list h3{margin:0 0 4px;font-size:18px;letter-spacing:.2px}
+  .menu-list p{margin:0;color:var(--muted)}
+  .menu-note{margin-top:10px;padding:10px;border:1px dashed var(--line);border-radius:10px;color:var(--muted)}
+</style>
 </body>
 </html>
