@@ -92,33 +92,28 @@
         </label>
       </div>
 
-      <fieldset class="roles">
-        <legend>Positions you’re applying for (choose one or more)</legend>
-        <label><input type="checkbox" name="roles" value="Bartender"> Bartender</label>
-        <label><input type="checkbox" name="roles" value="Prep Cook"> Prep Cook</label>
-        <label><input type="checkbox" name="roles" value="Wait Staff"> Wait Staff</label>
-        <label><input type="checkbox" name="roles" value="Store Manager"> Store Manager</label>
-        <label><input type="checkbox" name="roles" value="Cook"> Cook</label>
-        <label><input type="checkbox" name="roles" value="Busser"> Busser</label>
-        <label><input type="checkbox" name="roles" value="General Help"> General Help</label>
-      </fieldset>
+    <fieldset class="availability">
+  <legend>Availability</legend>
 
-      <fieldset class="availability">
-        <legend>Availability</legend>
-        <div class="grid-2">
-          <label>Days available
-            <select name="days_available" multiple size="5">
-              <option>Mon</option><option>Tue</option><option>Wed</option>
-              <option>Thu</option><option>Fri</option><option>Sat</option><option>Sun</option>
-            </select>
-          </label>
-          <label>Times available
-            <select name="times_available" multiple size="5">
-              <option>Morning</option><option>Afternoon</option><option>Evening</option><option>Late</option>
-            </select>
-          </label>
-        </div>
-      </fieldset>
+  <label class="group-label">Days available</label>
+  <div class="chip-group">
+    <label class="chip"><input type="checkbox" name="days_available" value="Mon"><span>Mon</span></label>
+    <label class="chip"><input type="checkbox" name="days_available" value="Tue"><span>Tue</span></label>
+    <label class="chip"><input type="checkbox" name="days_available" value="Wed"><span>Wed</span></label>
+    <label class="chip"><input type="checkbox" name="days_available" value="Thu"><span>Thu</span></label>
+    <label class="chip"><input type="checkbox" name="days_available" value="Fri"><span>Fri</span></label>
+    <label class="chip"><input type="checkbox" name="days_available" value="Sat"><span>Sat</span></label>
+    <label class="chip"><input type="checkbox" name="days_available" value="Sun"><span>Sun</span></label>
+  </div>
+
+  <label class="group-label" style="margin-top:10px">Times available</label>
+  <div class="chip-group">
+    <label class="chip"><input type="checkbox" name="times_available" value="Morning"><span>Morning</span></label>
+    <label class="chip"><input type="checkbox" name="times_available" value="Afternoon"><span>Afternoon</span></label>
+    <label class="chip"><input type="checkbox" name="times_available" value="Evening"><span>Evening</span></label>
+    <label class="chip"><input type="checkbox" name="times_available" value="Late"><span>Late</span></label>
+  </div>
+</fieldset>
 
       <label>Résumé URL (Google Drive/Dropbox link)
         <input type="url" name="resume_url" placeholder="https://drive.google.com/…">
