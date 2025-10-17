@@ -250,3 +250,21 @@ button:focus-visible, .btn:focus-visible, input:focus-visible, select:focus-visi
 }
 .modal .social:hover{border-color:rgba(255,255,255,.18)}
 @media (max-width:520px){ .modal__cta .btn{flex:1} }
+/* Chip checkboxes for mobile-friendly availability */
+.group-label{display:block;margin:6px 0 4px;color:var(--muted)}
+.chip-group{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:inline-flex}
+.chip input{position:absolute;inset:0;opacity:0}
+.chip span{
+  display:inline-block;padding:8px 12px;border-radius:999px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(0,0,0,.12));
+  color:var(--text); font-size:14px; line-height:1;
+}
+.chip input:checked + span{
+  border-color:transparent;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#061219; font-weight:700;
+}
+.checkbox{display:flex;align-items:center;gap:10px}
+.checkbox input{width:18px;height:18px}
