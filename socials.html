@@ -188,18 +188,9 @@
       pointer-events: none;
     }
 
-    .social-link:active {
-      transform: translateY(1px) scale(0.99);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-    }
-
     .social-link:hover {
       background: var(--button-hover);
       border-color: rgba(255, 213, 74, 0.7);
-    }
-
-    .social-link:hover::before {
-      opacity: 1;
     }
 
     .social-main {
@@ -256,13 +247,13 @@
       body {
         padding: 30px;
       }
-
       .card {
         padding: 26px 22px 22px;
       }
     }
   </style>
 </head>
+
 <body>
   <main class="socials-page">
     <section class="card" aria-label="The Bypass 168 social links">
@@ -277,38 +268,52 @@
 
       <div class="divider-road"></div>
 
-      <!-- Optional: show your main handle / hashtag -->
       <p class="handle">
         Find us as <span>@thebypass168</span> &nbsp;|&nbsp; #thebypass168
       </p>
+
       <p class="hint">This page is built for your phone — every button is tap-friendly.</p>
 
       <div class="social-list">
 
+        <!-- WEBSITE BUTTON -->
+        <a class="social-link" href="/index.html">
+          <div class="social-main">
+            <div class="social-icon">🏠</div>
+            <div class="social-text">
+              <span class="social-name">Website</span>
+              <span class="social-handle">thebypass168.com</span>
+            </div>
+          </div>
+          <span class="chevron">›</span>
+        </a>
+
+        <!-- MENU BUTTON -->
+        <a class="social-link" href="/menu.html">
+          <div class="social-main">
+            <div class="social-icon">🍽️</div>
+            <div class="social-text">
+              <span class="social-name">Menu</span>
+              <span class="social-handle">View our full menu</span>
+            </div>
+          </div>
+          <span class="chevron">›</span>
+        </a>
+
         <!-- FACEBOOK -->
-        <a
-          class="social-link"
-          href="https://www.facebook.com/REPLACE_WITH_YOUR_PAGE"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="social-link" href="https://www.facebook.com/REPLACE_WITH_YOUR_PAGE" target="_blank">
           <div class="social-main">
             <div class="social-icon">f</div>
             <div class="social-text">
               <span class="social-name">Facebook</span>
-              <span class="social-handle">@thebypass168 (Page)</span>
+              <span class="social-handle">@thebypass168</span>
             </div>
           </div>
           <span class="chevron">›</span>
         </a>
 
         <!-- INSTAGRAM -->
-        <a
-          class="social-link"
-          href="https://www.instagram.com/REPLACE_WITH_YOUR_HANDLE"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="social-link" href="https://www.instagram.com/REPLACE_WITH_YOUR_HANDLE" target="_blank">
           <div class="social-main">
             <div class="social-icon">📸</div>
             <div class="social-text">
@@ -320,12 +325,7 @@
         </a>
 
         <!-- X / TWITTER -->
-        <a
-          class="social-link"
-          href="https://x.com/REPLACE_WITH_YOUR_HANDLE"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="social-link" href="https://x.com/REPLACE_WITH_YOUR_HANDLE" target="_blank">
           <div class="social-main">
             <div class="social-icon">𝕏</div>
             <div class="social-text">
@@ -337,12 +337,7 @@
         </a>
 
         <!-- TIKTOK -->
-        <a
-          class="social-link"
-          href="https://www.tiktok.com/@REPLACE_WITH_YOUR_HANDLE"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="social-link" href="https://www.tiktok.com/@REPLACE_WITH_YOUR_HANDLE" target="_blank">
           <div class="social-main">
             <div class="social-icon">🎵</div>
             <div class="social-text">
@@ -354,12 +349,7 @@
         </a>
 
         <!-- LEMON8 -->
-        <a
-          class="social-link"
-          href="https://www.lemon8-app.com/u/REPLACE_WITH_YOUR_HANDLE"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="social-link" href="https://www.lemon8-app.com/u/REPLACE_WITH_YOUR_HANDLE" target="_blank">
           <div class="social-main">
             <div class="social-icon">🍋</div>
             <div class="social-text">
@@ -369,25 +359,6 @@
           </div>
           <span class="chevron">›</span>
         </a>
-
-        <!-- OPTIONAL: YOUTUBE OR OTHER LINKS -->
-        <!--
-        <a
-          class="social-link"
-          href="https://www.youtube.com/@REPLACE_WITH_YOUR_CHANNEL"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div class="social-main">
-            <div class="social-icon">▶️</div>
-            <div class="social-text">
-              <span class="social-name">YouTube</span>
-              <span class="social-handle">@thebypass168</span>
-            </div>
-          </div>
-          <span class="chevron">›</span>
-        </a>
-        -->
 
       </div>
 
