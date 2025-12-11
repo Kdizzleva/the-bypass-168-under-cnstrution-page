@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Bypass 168 Family Wall</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Use your existing global styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Page-specific styling – plays nice with your existing dark/neon vibe */
+
+    body {
+      margin: 0;
+      background: #05060a;
+      color: #f5f5f5;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* Simple header – adjust to match your existing layout if needed */
+    header.site-header {
+      background: rgba(5, 6, 10, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .site-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .site-logo {
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .site-logo span {
+      background: linear-gradient(135deg, #ff2d8a, #27e9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    nav.main-nav {
+      display: flex;
+      gap: 0.9rem;
+      font-size: 0.85rem;
+    }
+
+    nav.main-nav a {
+      text-decoration: none;
+      color: #d0d0d0;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    nav.main-nav a:hover,
+    nav.main-nav a.active {
+      background: rgba(255, 255, 255, 0.07);
+      color: #ffffff;
+    }
+
+    /* Page layout */
+    main.family-wall-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+    }
+
+    .page-title-block {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .page-title-block h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.8rem;
+    }
+
+    .page-title-block p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #cccccc;
+    }
+
+    .page-title-highlight {
+      background: linear-gradient(135deg, #ff2d8a, #27e9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+    }
+
+    .grid-two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 768px) {
+      .grid-two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(39, 233, 255, 0.12), transparent 50%),
+                  radial-gradient(circle at bottom right, rgba(255, 45, 138, 0.12), transparent 50%),
+                  rgba(11, 11, 18, 0.96);
+      border-radius: 18px;
+      padding: 1.4rem 1.25rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.65);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      margin-top: 0;
+      color: #d4d4d4;
+    }
+
+    form.family-form {
+      margin-top: 0.75rem;
+    }
+
+    label {
+      display: block;
+      margin: 0.7rem 0 0.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="file"] {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border-radius: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(8, 9, 14, 0.95);
+      color: #f5f5f5;
+      font-size: 0.9rem;
+      box-sizing: border-box;
+    }
+
+    input[type="file"] {
+      padding: 0.45rem 0.3rem;
+      font-size: 0.85rem;
+    }
+
+    input::placeholder {
+      color: #888;
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      color: #b8b8b8;
+      margin-top: 0.25rem;
+    }
+
+    .submit-row {
+      margin-top: 1.1rem;
+      text-align: center;
+    }
+
+    button[type="submit"] {
+      padding: 0.8rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff2d8a, #27e9ff);
+      color: #05060a;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.85);
+    }
+
+    .small-print {
+      margin-top: 0.9rem;
+      font-size: 0.75rem;
+      text-align: center;
+      color: #a0a0a0;
+    }
+
+    /* Gallery styling */
+    .family-gallery-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .family-gallery-header h2 {
+      margin: 0;
+    }
+
+    .family-gallery-header span {
+      font-size: 0.8rem;
+      color: #bbbbbb;
+    }
+
+    .gallery-status {
+      font-size: 0.8rem;
+      color: #aaaaaa;
+      margin-bottom: 0.8rem;
+    }
+
+    .family-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .family-card {
+      background: rgba(7, 7, 13, 0.92);
+      border-radius: 14px;
+      padding: 0.65rem 0.65rem 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .family-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(39, 233, 255, 0.16), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.12s ease;
+      pointer-events: none;
+    }
+
+    .family-card:hover::before {
+      opacity: 1;
+    }
+
+    .family-photo-wrap {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #101018;
+      aspect-ratio: 4 / 3;
+    }
+
+    .family-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .family-card h3 {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .family-card p {
+      font-size: 0.78rem;
+      margin: 0;
+      color: #c4c4c4;
+    }
+
+    .family-tagline {
+      font-size: 0.72rem;
+      color: #999999;
+    }
+
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.05rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.7rem;
+      color: #d0fdfa;
+      background: rgba(12, 18, 24, 0.9);
+    }
+
+    .pill-label-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff2d8a, #27e9ff);
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Simple header / nav -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo">
+        <span>The Bypass 168</span> • Family Wall
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="socials.html">Socials</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="family-wall-main">
+    <div class="page-title-block">
+      <h1>Join the <span class="page-title-highlight">Bypass 168 Family</span></h1>
+      <p>
+        Sign the wall of street signs, scan the QR code, snap a pic, and you’re officially one of us. 🚦
+      </p>
+    </div>
+
+    <section class="grid-two-col">
+      <!-- LEFT: Form -->
+      <article class="card">
+        <h2>Add your crew to the wall</h2>
+        <p>
+          Just signed a street sign? Fill this out to lock in your spot on our digital family wall.
+        </p>
+
+        <form
+          class="family-form"
+          action="https://example.com/your-form-endpoint"  <!-- we'll replace this later -->
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <!-- Email -->
+          <label for="email">Email address *</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="you@example.com"
+          >
+
+          <!-- Legal/real name -->
+          <label for="fullName">First &amp; last name *</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            required
+            placeholder="First and last name"
+          >
+
+          <!-- Date of birth -->
+          <label for="dob">Date of birth *</label>
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            required
+          >
+          <div class="hint">
+            Used for birthday surprises &amp; promos. We’ll never sell your info.
+          </div>
+
+          <!-- Preferred display name -->
+          <label for="displayName">Preferred name for our wall *</label>
+          <input
+            type="text"
+            id="displayName"
+            name="displayName"
+            required
+            placeholder="e.g. Rodgers Family, Billy &amp; Jean"
+          >
+          <div class="hint">
+            This is what will show on our Bypass 168 Family wall.
+          </div>
+
+          <!-- Date signed -->
+          <label for="signDate">Date you signed the wall *</label>
+          <input
+            type="date"
+            id="signDate"
+            name="signDate"
+            required
+          >
+          <div class="hint">
+            Defaults to today, but you can adjust if you signed earlier.
+          </div>
+
+          <!-- Photo capture -->
+          <label for="photo">Photo in front of the sign wall *</label>
+          <input
+            type="file"
+            id="photo"
+            name="photo"
+            accept="image/*"
+            capture="environment"
+            required
+          >
+          <div class="hint">
+            On your phone, this should open your camera so you can snap a quick pic.
+          </div>
+
+          <div class="submit-row">
+            <button type="submit">Join the Bypass 168 Family</button>
+          </div>
+
+          <p class="small-print">
+            By submitting, you agree that we may display your preferred name and photo
+            on our in-store and online Bypass 168 Family wall. If you ever want to be
+            removed, just email us.
+          </p>
+        </form>
+      </article>
+
+      <!-- RIGHT: Gallery -->
+      <article class="card">
+        <div class="family-gallery-header">
+          <h2>Our Bypass 168 Family</h2>
+          <span>Newest crews first</span>
+        </div>
+
+        <div id="gallery-status" class="gallery-status">
+          Loading the wall…
+        </div>
+
+        <div id="family-wall-list" class="family-gallery-grid">
+          <!-- JS will inject cards here -->
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    // 1) Auto-fill "Date signed" with today
+    (function() {
+      const signDateInput = document.getElementById('signDate');
+      if (signDateInput) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        signDateInput.value = `${yyyy}-${mm}-${dd}`;
+      }
+    })();
+
+    // 2) Future: Fetch from Google Sheets / Apps Script JSON feed
+    // We'll replace FAMILY_FEED_URL once we build the Apps Script.
+    const FAMILY_FEED_URL = 'https://script.google.com/macros/s/YOUR-SCRIPT-ID/exec';
+
+    (function loadFamilyWall() {
+      const listEl = document.getElementById('family-wall-list');
+      const statusEl = document.getElementById('gallery-status');
+
+      if (!listEl || !statusEl) return;
+
+      // While we don't have a real endpoint yet, you can comment this out
+      // or use the dummyData block below for testing.
+
+      fetch(FAMILY_FEED_URL)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Expecting data like: [{ displayName, signDate, photoUrl }, ...]
+          if (!Array.isArray(data) || data.length === 0) {
+            statusEl.textContent = 'No crews on the wall yet — be the first to join!';
+            return;
+          }
+
+          statusEl.textContent = `Showing ${data.length} crew${data.length === 1 ? '' : 's'} on the wall.`;
+
+          data
+            .slice()           // copy
+            .reverse()         // newest first (if Sheet is oldest first)
+            .forEach(entry => {
+              const card = document.createElement('div');
+              card.className = 'family-card';
+
+              const displayName = entry.displayName || 'Bypass 168 Crew';
+              const signDate = entry.signDate || '';
+              const photoUrl = entry.photoUrl || '';
+
+              let photoHtml = '';
+              if (photoUrl) {
+                photoHtml = `
+                  <div class="family-photo-wrap">
+                    <img src="${photoUrl}" alt="${displayName} at The Bypass 168 sign wall">
+                  </div>
+                `;
+              }
+
+              card.innerHTML = `
+                ${photoHtml}
+                <h3>${displayName}</h3>
+                <div class="meta-row">
+                  <p class="family-tagline">
+                    ${signDate ? `Signed the wall on ${signDate}` : 'Proud member of the Bypass 168 Family'}
+                  </p>
+                  <span class="pill-label">
+                    <span class="pill-label-dot"></span>
+                    Family
+                  </span>
+                </div>
+              `;
+
+              listEl.appendChild(card);
+            });
+        })
+        .catch(error => {
+          // While we're in setup mode (no real endpoint yet), this will usually run.
+          console.warn('Could not load family wall data yet:', error);
+          statusEl.textContent = 'Wall updates coming soon — your crew will show here after we finish setup.';
+
+          // OPTIONAL: uncomment this block to show fake sample entries for now.
+          /*
+          const dummyData = [
+            { displayName: 'Rodgers Family', signDate: '2025-12-11', photoUrl: '' },
+            { displayName: 'Billy & Jean', signDate: '2025-12-10', photoUrl: '' }
+          ];
+
+          dummyData.forEach(entry => {
+            const card = document.createElement('div');
+            card.className = 'family-card';
+            card.innerHTML = `
+              <h3>${entry.displayName}</h3>
+              <div class="meta-row">
+                <p class="family-tagline">
+                  Signed the wall on ${entry.signDate}
+                </p>
+                <span class="pill-label">
+                  <span class="pill-label-dot"></span>
+                  Family
+                </span>
+              </div>
+            `;
+            listEl.appendChild(card);
+          });
+          */
+        });
+    })();
+  </script>
+</body>
+</html>
