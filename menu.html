@@ -395,48 +395,80 @@
 <script src="scripts.js"></script>
 
 <style>
-  /* Small menu-specific helpers (keeps styles.css clean) */
+  /* Menu layout refinements */
   .menu-list {
     list-style: none;
     padding: 0;
-    margin: 8px 0 0;
+    margin: 14px 0 0;
     display: grid;
-    gap: 14px;
+    gap: 16px;
   }
+
   .menu-list li {
     border-top: 1px solid var(--line);
-    padding-top: 12px;
+    padding-top: 14px;
   }
+
   .menu-list li:first-child {
     border-top: none;
     padding-top: 0;
   }
+
+  /* Title + price alignment */
   .menu-list h3 {
-    margin: 0 0 4px;
+    margin: 0;
     font-size: 18px;
     letter-spacing: 0.2px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: baseline;
-    gap: 12px;
+    column-gap: 14px;
+    row-gap: 6px;
+    line-height: 1.2;
   }
+
   .menu-price {
-    font-weight: 600;
+    font-weight: 700;
     white-space: nowrap;
+    font-variant-numeric: tabular-nums;
   }
+
+  /* Description spacing + readability */
   .menu-list p {
-    margin: 0;
+    margin: 6px 0 0;
     color: var(--muted);
+    line-height: 1.5;
+    max-width: 70ch;
   }
+
+  /* Notes look more intentional */
   .menu-note {
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 14px;
+    padding: 12px 14px;
     border: 1px dashed var(--line);
-    border-radius: 10px;
+    border-radius: 12px;
     color: var(--muted);
-    line-height: 1.45;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Make “cards” feel evenly spaced (only if .card exists in styles.css) */
+  .card {
+    padding: 18px 18px;
+  }
+
+  /* Mobile: stack price under title if needed */
+  @media (max-width: 520px) {
+    .menu-list h3 {
+      grid-template-columns: 1fr;
+    }
+    .menu-price {
+      justify-self: start;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
   }
 </style>
+
 
 </body>
 </html>
